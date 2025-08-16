@@ -1,34 +1,349 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nur Reski Mustamin — Portfolio</title>
+  <meta name="description" content="Portfolio dinamis & responsif milik Nur Reski Mustamin: Cloud Computing, IT Support, Desktop Support, Manage Hosting Provider." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind via CDN (cukup untuk Pages statis) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config minimal untuk warna kustom
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            primary: {
+              50: '#eefaff', 100: '#d9f3ff', 200: '#bfe9ff', 300: '#94dcff', 400: '#5ec7ff',
+              500: '#2bb0ff', 600: '#1095e8', 700: '#0b75b8', 800: '#0c5d90', 900: '#0f4e78'
+            }
+          },
+          boxShadow: { soft: '0 10px 30px rgba(0,0,0,0.08)' }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: light dark; }
+    .glass { background: rgba(255,255,255,0.7); backdrop-filter: blur(10px); }
+    .dark .glass { background: rgba(17,24,39,0.5); }
+  </style>
 </head>
-<body>
-  <header>
-    <h1>Nur Reski Mustamin</h1>
-    <p>Cloud Computing • IT Support • Desktop Support</p>
-  </header>
-  <main>
-    <section>
-      <h2>Tentang Saya</h2>
-      <p>Lulusan D3 Multimedia dan Teknik Informatika dengan pengalaman di Cloud Computing, Manage Hosting, dan IT Support.</p>
-    </section>
-    <section>
-      <h2>Media Sosial</h2>
-      <ul>
-        <li><a href="https://instagram.com/nreskim_" target="_blank">Instagram</a></li>
-        <li><a href="https://www.linkedin.com/in/nur-reski-mustamin-340475210/" target="_blank">LinkedIn</a></li>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur border-b border-gray-200/60 dark:border-gray-800">
+    <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-2 font-extrabold tracking-tight text-lg">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-primary-500"></span>
+        NUR RESKI MUSTAMIN
+      </a>
+      <ul class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <li><a class="hover:text-primary-600" href="#about">Tentang</a></li>
+        <li><a class="hover:text-primary-600" href="#skills">Keahlian</a></li>
+        <li><a class="hover:text-primary-600" href="#experience">Pengalaman</a></li>
+        <li><a class="hover:text-primary-600" href="#education">Pendidikan</a></li>
+        <li><a class="hover:text-primary-600" href="#contact">Kontak</a></li>
       </ul>
-    </section>
-    <section>
-      <a class="download-button" href="cv.pdf" download>Unduh CV</a>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2025 Nur Reski Mustamin</p>
-  </footer>
+      <div class="flex items-center gap-2">
+        <button id="themeToggle" aria-label="Toggle tema" class="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800">
+          <!-- icon diisi via JS sesuai tema -->
+          <span id="themeIcon" class="inline-block w-5 h-5"></span>
+        </button>
+        <button id="menuBtn" class="md:hidden p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Buka menu">
+          <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-gray-200 dark:border-gray-800">
+      <div class="px-4 py-3 flex flex-col gap-3 text-sm font-medium">
+        <a class="hover:text-primary-600" href="#about">Tentang</a>
+        <a class="hover:text-primary-600" href="#skills">Keahlian</a>
+        <a class="hover:text-primary-600" href="#experience">Pengalaman</a>
+        <a class="hover:text-primary-600" href="#education">Pendidikan</a>
+        <a class="hover:text-primary-600" href="#contact">Kontak</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-primary-50 to-transparent dark:from-primary-900/20"></div>
+    <div class="max-w-6xl mx-auto px-4 pt-16 pb-12 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight">Halo, saya <span class="text-primary-600">Nur Reski Mustamin</span>.</h1>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">Cloud Computing • Desktop/IT Support • Manage Hosting Provider • IT Security</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-primary-600 text-white font-semibold shadow-soft hover:translate-y-0.5 transition">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            Hubungi Saya
+          </a>
+          <a id="downloadCV" href="#" class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-gray-300 dark:border-gray-700 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14m0 0l-6-6m6 6l6-6M5 19h14"/></svg>
+            Unduh CV (PDF)
+          </a>
+        </div>
+        <div class="mt-6 flex items-center gap-4 text-sm">
+          <a class="inline-flex items-center gap-2 hover:text-primary-600" href="mailto:nurreskimustamin1@gmail.com"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg> nurreskimustamin1@gmail.com</a>
+          <span class="text-gray-400">•</span>
+          <a class="hover:text-primary-600" href="tel:+6287751795406">+62 877-5179-5406</a>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="glass rounded-3xl p-6 shadow-soft border border-white/60 dark:border-white/10">
+          <h2 class="text-sm font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">Ringkasan Profil</h2>
+          <p class="mt-3 leading-relaxed text-gray-700 dark:text-gray-300" id="summary"></p>
+          <dl class="mt-6 grid grid-cols-2 gap-4 text-sm">
+            <div class="p-3 rounded-2xl bg-white/60 dark:bg-gray-800/50 border border-gray-200/60 dark:border-gray-800">
+              <dt class="text-gray-500">Domisili</dt>
+              <dd class="font-semibold">Makassar</dd>
+            </div>
+            <div class="p-3 rounded-2xl bg-white/60 dark:bg-gray-800/50 border border-gray-200/60 dark:border-gray-800">
+              <dt class="text-gray-500">Status</dt>
+              <dd class="font-semibold">Freelance / Pekerja Lepas</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-end justify-between">
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Keahlian</h2>
+        <div class="text-sm text-gray-500">Klik untuk memfilter pengalaman</div>
+      </div>
+      <div id="skillChips" class="mt-6 flex flex-wrap gap-3"></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="py-12 bg-white dark:bg-gray-950/30 border-y border-gray-200/60 dark:border-gray-800">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Pengalaman</h2>
+      <div id="expList" class="mt-8 grid gap-4"></div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Pendidikan</h2>
+      <div id="eduGrid" class="mt-8 grid sm:grid-cols-2 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="rounded-3xl p-8 bg-gradient-to-br from-white to-primary-50 dark:from-gray-900 dark:to-gray-800 border border-gray-200/60 dark:border-gray-800 shadow-soft">
+        <div class="grid md:grid-cols-2 gap-6 items-center">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Mari Bekerja Sama</h2>
+            <p class="mt-3 text-gray-600 dark:text-gray-300">Terbuka untuk peluang Cloud Computing, IT/Desk Support, dan pengelolaan hosting/cloud server.</p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="mailto:nurreskimustamin1@gmail.com" class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-primary-600 text-white font-semibold shadow-soft">Kirim Email</a>
+              <a href="https://wa.me/6287751795406" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-gray-300 dark:border-gray-700 font-semibold">WhatsApp</a>
+            </div>
+          </div>
+          <form id="contactForm" class="space-y-4">
+            <div>
+              <label class="text-sm font-medium">Nama</label>
+              <input required class="mt-1 w-full rounded-2xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-4 py-2.5" type="text" name="name" />
+            </div>
+            <div>
+              <label class="text-sm font-medium">Email</label>
+              <input required class="mt-1 w-full rounded-2xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-4 py-2.5" type="email" name="email" />
+            </div>
+            <div>
+              <label class="text-sm font-medium">Pesan</label>
+              <textarea required class="mt-1 w-full rounded-2xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-4 py-2.5" name="message" rows="4"></textarea>
+            </div>
+            <button class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-primary-600 text-white font-semibold shadow-soft" type="submit">Kirim</button>
+            <p id="formStatus" class="text-sm"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-8 text-center text-sm text-gray-500">© <span id="year"></span> Nur Reski Mustamin. Dibuat dengan ❤ dan Tailwind.</footer>
+
+  <script>
+    // ------- DATA dari CV -------
+    const DATA = {
+      name: 'Nur Reski Mustamin',
+      location: 'Makassar',
+      email: 'nurreskimustamin1@gmail.com',
+      phone: '+6287751795406',
+      socials: [
+        { label: 'Instagram', url: 'https://instagram.com/nreskim_' },
+        { label: 'Threads', url: 'https://www.threads.net/@nreskim_' },
+        { label: 'LinkedIn', url: 'https://www.linkedin.com/in/nur-reski-mustamin-340475210' },
+      ],
+      summary: 'Lulusan D3 Multimedia (Politeknik Negeri Media Kreatif) dan S1 Teknik Informatika (Universitas Teknologi Akba Makassar). Berpengalaman dalam Cloud Computing, Manage Hosting Provider, Desktop Support, dan IT Support. Mampu melakukan konfigurasi & maintenance server/komputer.',
+      skills: [
+        'Cloud Computing', 'Desktop Support', 'IT Support', 'Manage Hosting Provider', 'IT Security', 'Instalasi VPS', 'RDP', 'Managed Cloud Server'
+      ],
+      experience: [
+        {
+          role: 'Freelance / Pekerja Lepas',
+          org: 'Independen',
+          period: 'Sekarang',
+          tasks: [
+            'Cloud Computing, Managed Cloud Server',
+            'Instalasi VPS dan RDP',
+          ],
+          tags: ['Cloud Computing', 'Managed Cloud Server', 'VPS', 'RDP']
+        },
+        {
+          role: 'Staf Magang',
+          org: 'Dinas Pariwisata Kota Makassar',
+          period: 'Mei 16, 2018 – Agustus 17, 2018',
+          tasks: ['Mengelola Website Ekraf', 'Penginputan Data', 'Mengikuti kegiatan bidang terkait'],
+          tags: ['Website', 'Data Entry', 'Support']
+        },
+        {
+          role: 'Staf Magang',
+          org: 'BKKBN Makassar',
+          period: 'Juni 12, 2017 – Juli 17, 2017',
+          tasks: ['Penginputan Data', 'Mengikuti kegiatan bidang terkait'],
+          tags: ['Data Entry', 'Support']
+        }
+      ],
+      education: [
+        {
+          degree: 'S1 Teknik Informatika',
+          inst: 'Universitas Teknologi Akba Makassar',
+          gpa: 'IPK 3.74',
+          year: '2022'
+        },
+        {
+          degree: 'D3 Desain Grafis (Konsentrasi Multimedia)',
+          inst: 'Politeknik Negeri Media Kreatif',
+          gpa: 'IPK 3.48',
+          year: '2019'
+        }
+      ],
+      cvFile: 'CV_Nur_Reski_Mustamin.pdf' // ganti saat deploy (lihat instruksi di bawah)
+    };
+
+    // ------- THEME (dark/light) -------
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const userPref = localStorage.getItem('theme');
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    function applyTheme(t){
+      document.documentElement.classList.toggle('dark', t === 'dark');
+      themeIcon.innerHTML = t === 'dark'
+        ? '<svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor"><path d="M21.64 13A9 9 0 1111 2.36 7 7 0 1021.64 13z"/></svg>'
+        : '<svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+    }
+
+    let theme = userPref || (systemDark ? 'dark' : 'light');
+    applyTheme(theme);
+    themeToggle.addEventListener('click', () => {
+      theme = theme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', theme);
+      applyTheme(theme);
+    });
+
+    // ------- MOBILE MENU -------
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // ------- POPULATE SUMMARY -------
+    document.getElementById('summary').textContent = DATA.summary;
+
+    // ------- SKILLS CHIPS + FILTER -------
+    const skillChips = document.getElementById('skillChips');
+    const expList = document.getElementById('expList');
+    let activeSkill = null;
+
+    function renderSkills(){
+      skillChips.innerHTML = '';
+      DATA.skills.forEach(s => {
+        const btn = document.createElement('button');
+        btn.className = 'px-4 py-2 rounded-2xl border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium';
+        btn.textContent = s;
+        btn.addEventListener('click', () => { activeSkill = (activeSkill === s ? null : s); renderExperience(); renderSkills(); });
+        if(activeSkill === s){ btn.classList.add('bg-primary-600','text-white','border-primary-600'); }
+        skillChips.appendChild(btn);
+      });
+    }
+
+    function renderExperience(){
+      expList.innerHTML = '';
+      const filtered = activeSkill ? DATA.experience.map(e => ({...e, match: e.tags?.includes(activeSkill)})) : DATA.experience.map(e => ({...e, match: true}));
+      filtered.forEach(e => {
+        const card = document.createElement('article');
+        card.className = 'rounded-2xl border ' + (e.match ? 'border-gray-200 dark:border-gray-800' : 'border-dashed border-gray-200/60 dark:border-gray-800/60 opacity-60');
+        card.innerHTML = `
+          <div class="p-5">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="text-lg font-semibold">${e.role} <span class="text-gray-500 font-normal">· ${e.org}</span></h3>
+              <div class="text-sm text-gray-500">${e.period}</div>
+            </div>
+            <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300">
+              ${e.tasks.map(t => `<li>${t}</li>`).join('')}
+            </ul>
+            ${e.tags?.length ? `<div class="mt-3 flex flex-wrap gap-2">${e.tags.map(t => `<span class='px-2 py-1 rounded-xl text-xs bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700'>${t}</span>`).join('')}</div>` : ''}
+          </div>`;
+        expList.appendChild(card);
+      });
+    }
+
+    // ------- EDUCATION -------
+    const eduGrid = document.getElementById('eduGrid');
+    function renderEducation(){
+      eduGrid.innerHTML = '';
+      DATA.education.forEach(ed => {
+        const card = document.createElement('div');
+        card.className = 'rounded-2xl border border-gray-200 dark:border-gray-800 p-5';
+        card.innerHTML = `
+          <div class="text-sm text-gray-500">${ed.year}</div>
+          <h3 class="mt-1 text-lg font-semibold">${ed.degree}</h3>
+          <p class="text-gray-600 dark:text-gray-300">${ed.inst}</p>
+          <p class="mt-2 text-sm font-medium">${ed.gpa}</p>`;
+        eduGrid.appendChild(card);
+      });
+    }
+
+    // ------- CONTACT FORM (demo only) -------
+    const form = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const payload = Object.fromEntries(fd.entries());
+      // Demo: kirim sebagai mailto draft
+      const subject = encodeURIComponent('Kontak dari Portfolio');
+      const body = encodeURIComponent(`Nama: ${payload.name}\nEmail: ${payload.email}\n\n${payload.message}`);
+      window.location.href = `mailto:${DATA.email}?subject=${subject}&body=${body}`;
+      formStatus.textContent = 'Terima kasih! Aplikasi email Anda akan terbuka.';
+    });
+
+    // ------- DOWNLOAD CV -------
+    document.getElementById('downloadCV').addEventListener('click', (e) => {
+      e.preventDefault();
+      // Saat deploy: letakkan file PDF di /public lalu ubah DATA.cvFile
+      window.open(DATA.cvFile, '_blank');
+    });
+
+    // ------- FOOTER YEAR -------
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ------- RENDER INITIAL -------
+    renderSkills();
+    renderExperience();
+    renderEducation();
+  </script>
 </body>
 </html>
